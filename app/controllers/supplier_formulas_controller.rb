@@ -5,6 +5,6 @@ class SupplierFormulasController < ApplicationController
     private
   
     def model_params
-      params.require(:payload).permit(:margin, :active, :supplier_id)
+      params.require(:payload).permit(:margin, :label, :active, :supplier_id)
     end    
 end

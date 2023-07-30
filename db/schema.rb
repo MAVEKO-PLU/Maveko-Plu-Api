@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_18_191637) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_30_141250) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_191637) do
     t.bigint "customer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "label", null: false
     t.index ["customer_id"], name: "index_customer_formulas_on_customer_id"
   end
 
@@ -124,6 +125,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_191637) do
     t.index ["currency_id"], name: "index_pricings_on_currency_id"
   end
 
+  create_table "sales_order_documents", force: :cascade do |t|
+    t.string "so_num", null: false
+    t.string "status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "supplier_documents", force: :cascade do |t|
     t.string "reference_no"
     t.bigint "supplier_id", null: false
@@ -140,6 +148,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_191637) do
     t.bigint "supplier_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "label", null: false
     t.index ["supplier_id"], name: "index_supplier_formulas_on_supplier_id"
   end
 
