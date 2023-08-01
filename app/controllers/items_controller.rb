@@ -1,6 +1,13 @@
 class ItemsController < ApplicationController
   include Common
 
+  def index
+    @data1 = Item.all
+    @data2 = Item.where.not(customer_item_pricing_id: !nil)
+
+    render json: {success: true, data: ActiveModelSerializers::SerializableResource.new(@data1), data2: ActiveModelSerializers::SerializableResource.new(@data2)}
+  end
+
   private
 
   def model_params

@@ -3,7 +3,7 @@
 # # Run `rails db:seed` to execute this file.
 
 # puts "Seeding Currencies..."
-# currency = Currency.where(name: "Euro", symbol: "€").first_or_create!
+currency = Currency.where(name: "Euro", symbol: "€").first_or_create!
 # puts "Currencies seeded successfully."
 
 # puts "Seeding Unit of Measures..."
@@ -13,11 +13,11 @@
 # puts "Unit of Measures seeded successfully."
 
 # puts "Seeding Users..."
-# user = User.where(email: "user@example.com").first_or_create! do |u|
-#   u.password = "password"
-#   u.password_confirmation = "password"
-#   u.role = "user"
-# end
+user = User.where(email: "user@example.com").first_or_create! do |u|
+  u.password = "password"
+  u.password_confirmation = "password"
+  u.role = "user"
+end
 # admin = User.where(email: "admin@example.com").first_or_create! do |u|
 #   u.password = "password"
 #   u.password_confirmation = "password"
@@ -26,8 +26,8 @@
 # puts "Users seeded successfully."
 
 # puts "Seeding Customers..."
-# john_doe = Customer.where(name: "John Doe", user_id: user.id).first_or_create!
-# jane_smith = Customer.where(name: "Jane Smith", user_id: user.id).first_or_create!
+john_doe = Customer.where(name: "John Doe", user_id: user.id).first_or_create!
+jane_smith = Customer.where(name: "Jane Smith", user_id: user.id).first_or_create!
 # puts "Customers seeded successfully."
 
 # puts "Seeding Suppliers..."
@@ -36,29 +36,29 @@
 # puts "Suppliers seeded successfully."
 
 # puts "Seeding Pricings..."
-# pricing = Pricing.where(
-#   price_in_euro: 100,
-#   old_purchase_price: 90,
-#   valid_from_old_purchase: Date.new(2023, 1, 1),
-#   new_purchase_price: 95,
-#   valid_from_new_purchase: Date.new(2023, 7, 1),
-#   valid_to_new_purchase: Date.new(2023, 12, 31),
-#   old_retail_price: 120,
-#   new_retail_price: 130,
-#   new_retail_price_valid_from: Date.new(2023, 7, 1),
-#   new_retail_price_valid_to: Date.new(2024, 6, 30),
-#   change_in_percentage: 5,
-#   currency_id: currency.id
-# ).first_or_create!
+pricing = Pricing.where(
+  price_in_euro: 100,
+  old_purchase_price: 90,
+  valid_from_old_purchase: Date.new(2023, 1, 1),
+  new_purchase_price: 95,
+  valid_from_new_purchase: Date.new(2023, 7, 1),
+  valid_to_new_purchase: Date.new(2023, 12, 31),
+  old_retail_price: 120,
+  new_retail_price: 130,
+  new_retail_price_valid_from: Date.new(2023, 7, 1),
+  new_retail_price_valid_to: Date.new(2024, 6, 30),
+  change_in_percentage: 5,
+  currency_id: currency.id
+).first_or_create!
 # puts "Pricings seeded successfully."
 
 # puts "Seeding Main Item Pricings..."
-main_item_pricing = MainItemPricing.where(pricing_id: 9).first_or_create!
+# main_item_pricing = MainItemPricing.where(pricing_id: 9).first_or_create!
 # puts "Main Item Pricings seeded successfully."
 
 # puts "Seeding Customer Item Pricings..."
-# customer_item_pricing_1 = CustomerItemPricing.where(customer_id: john_doe.id, pricing_id: pricing.id).first_or_create!
-# customer_item_pricing_2 = CustomerItemPricing.where(customer_id: jane_smith.id, pricing_id: pricing.id).first_or_create!
+customer_item_pricing_1 = CustomerItemPricing.where(customer_id: john_doe.id, pricing_id: pricing.id).first_or_create!
+customer_item_pricing_2 = CustomerItemPricing.where(customer_id: jane_smith.id, pricing_id: pricing.id).first_or_create!
 # puts "Customer Item Pricings seeded successfully."
 
 # puts "Seeding Dimensions..."

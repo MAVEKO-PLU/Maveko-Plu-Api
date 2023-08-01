@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_30_141250) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_31_064000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,7 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_30_141250) do
     t.bigint "base_unit_id"
     t.bigint "target_unit_id"
     t.bigint "main_item_pricing_id", null: false
-    t.bigint "customer_item_pricing_id", null: false
+    t.bigint "customer_item_pricing_id"
     t.bigint "dimension_id"
     t.index ["base_unit_id"], name: "index_items_on_base_unit_id"
     t.index ["customer_item_pricing_id"], name: "index_items_on_customer_item_pricing_id"
@@ -207,7 +207,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_30_141250) do
   add_foreign_key "customer_item_pricings", "customers"
   add_foreign_key "customer_item_pricings", "pricings"
   add_foreign_key "customers", "users"
-  add_foreign_key "items", "customer_item_pricings"
+  add_foreign_key "items", "customer_item_pricings", on_delete: :nullify
   add_foreign_key "items", "dimensions"
   add_foreign_key "items", "main_item_pricings"
   add_foreign_key "items", "unit_of_measures", column: "base_unit_id"

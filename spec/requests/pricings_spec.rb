@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Pricings", type: :request do
-  include_examples('request_shared_spec', 'pricings', 13)
+  include_examples('request_shared_spec', 'pricings', 14)
   
   let(:valid_attributes) do
     {
